@@ -1,0 +1,11 @@
+# @stackline/deep-is {{PACKAGE_VERSION}}
+
+Stack-safe deep equality preserving the deep-is 0.1.4 callable API and loose comparison semantics.
+
+Install: npm install @stackline/deep-is
+Alias migration: npm install deep-is@npm:@stackline/deep-is
+Documentation: https://alexandro.net/docs/vanilla/deep-is/
+Source: https://github.com/alexandroit/stackline-deep-is
+License: MIT
+
+The package has zero runtime dependencies and supports CommonJS, ESM, TypeScript 3.9+, Node.js 12+, and browser bundles.

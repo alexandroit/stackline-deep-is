@@ -1,0 +1,19 @@
+# @stackline/deep-is full reference
+
+Version: {{PACKAGE_VERSION}}
+Baseline: deep-is 0.1.4
+API: deepIs(actual, expected) -> boolean
+
+Use this package when an existing application relies on deep-is semantics but needs cycle-safe and stack-safe traversal. It preserves NaN equality, signed-zero distinction, loose primitive equality, dates, arguments objects, and enumerable own string-key comparison. It intentionally does not reinterpret Map, Set, RegExp, symbol keys, or non-enumerable keys.
+
+Reliability evidence includes 5,625 differential pairs, equivalent and unequal cyclic graphs, objects nested 100,000 levels deep, 100% core coverage, TypeScript 3.9 and current declarations, and downstream optionator checks.
+
+Install directly:
+npm install @stackline/deep-is
+
+Preserve the legacy dependency name:
+npm install deep-is@npm:@stackline/deep-is
+
+Compatibility: https://alexandro.net/docs/vanilla/deep-is/guides/compatibility.md
+Migration: https://alexandro.net/docs/vanilla/deep-is/guides/migration.md
+Security: https://github.com/alexandroit/stackline-deep-is/blob/main/SECURITY.md

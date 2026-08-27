@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@stackline/deep-is - Stack-safe deep equality</title>
+    <meta name="description" content="Compare JavaScript values with deep-is compatibility, cycle handling, stack-safe traversal, first-party TypeScript declarations, and zero runtime dependencies.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <link rel="canonical" href="https://alexandro.net/docs/vanilla/deep-is/">
+    <link rel="alternate" type="text/plain" href="./llms.txt" title="LLM summary">
+    <link rel="alternate" type="text/plain" href="./llms-full.txt" title="Full LLM reference">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@stackline/deep-is">
+    <meta property="og:description" content="Stack-safe deep equality with the proven deep-is contract.">
+    <meta property="og:url" content="https://alexandro.net/docs/vanilla/deep-is/">
+    <meta property="og:image" content="https://alexandro.net/docs/vanilla/deep-is/assets/deep-is-graph.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://alexandro.net/docs/vanilla/deep-is/assets/deep-is-graph.webp">
+    <meta name="theme-color" content="#0e6f6a">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"@stackline/deep-is","version":"{{PACKAGE_VERSION}}","description":"Stack-safe deep equality with deep-is compatibility.","codeRepository":"https://github.com/alexandroit/stackline-deep-is","downloadUrl":"https://www.npmjs.com/package/@stackline/deep-is","license":"https://opensource.org/license/mit","programmingLanguage":["JavaScript","TypeScript"],"runtimePlatform":["Node.js","Web browser"],"author":{"@type":"Person","name":"Alexandro Paixao Marques","url":"https://github.com/alexandroit"}}
+    </script>
+    <script defer src="./package.js"></script>
+    <script defer src="./analytics.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#playground">Skip to comparator</a>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="@stackline/deep-is documentation home"><span class="brand-mark" aria-hidden="true">S</span><span>@stackline/deep-is</span></a>
+      <nav aria-label="Primary navigation"><a href="#playground">Comparator</a><a href="#api">API</a><a href="https://github.com/alexandroit/stackline-deep-is">GitHub</a><a href="https://www.npmjs.com/package/@stackline/deep-is">npm</a></nav>
+    </header>
+    <main>
+      <section class="product-intro deep-is-hero" aria-labelledby="page-title">
+        <div class="intro-content">
+          <p class="eyebrow">Deep equality without recursive exhaustion</p>
+          <h1 id="page-title">@stackline/deep-is</h1>
+          <p>Keep the familiar loose equality contract while safely traversing cyclic and deeply nested JavaScript object graphs.</p>
+          <div class="install-row"><code>npm install @stackline/deep-is</code><button class="compact-button" type="button" data-copy="npm install @stackline/deep-is">Copy</button></div>
+          <div class="release-line"><span>v{{PACKAGE_VERSION}}</span><span>Node 12+</span><span>TypeScript 3.9-7.0</span><span>Zero runtime dependencies</span></div>
+        </div>
+      </section>
+      <section class="tool-band" id="playground" aria-labelledby="tool-title">
+        <div class="section-inner wide">
+          <div class="section-heading"><div><p class="eyebrow dark">Runs the production browser bundle</p><h2 id="tool-title">Value comparator</h2></div><button class="icon-button" id="reset-button" type="button" title="Reset comparator" aria-label="Reset comparator">&#8635;</button></div>
+          <div class="control-bar compact-controls">
+            <label><span>Scenario</span><select id="preset"><option value="nested">Nested objects</option><option value="loose">Loose primitives</option><option value="signed-zero">Signed zero</option><option value="different">Different values</option><option value="cycle">Equivalent cycles</option></select></label>
+            <label class="toggle-label"><input id="cycle" type="checkbox"><span>Add a self-reference to both objects</span></label>
+            <button class="primary-button" id="compare-button" type="button">Compare</button>
+          </div>
+          <div class="workspace-grid">
+            <section class="editor-panel"><header><h3>Actual value</h3><span>JSON</span></header><textarea id="actual-input" spellcheck="false" aria-label="Actual JSON value"></textarea></section>
+            <section class="editor-panel"><header><h3>Expected value</h3><span>JSON</span></header><textarea id="expected-input" spellcheck="false" aria-label="Expected JSON value"></textarea></section>
+          </div>
+          <div class="comparison-result" role="status" aria-live="polite"><span class="status-indicator" id="status-indicator" aria-hidden="true"></span><strong id="result-label">Ready</strong><span id="result-detail">Choose values and compare.</span></div>
+        </div>
+      </section>
+      <section class="content-band"><div class="section-inner content-grid"><div><p class="eyebrow dark">Lowest-change migration</p><h2>Keep every existing import</h2><p>Install through an npm alias when the application already requires <code>deep-is</code>.</p></div><div class="code-surface"><pre><code>npm install deep-is@npm:@stackline/deep-is</code></pre><pre><code>const deepIs = require('deep-is')</code></pre></div></div></section>
+      <section class="content-band muted" id="api"><div class="section-inner"><div class="section-heading"><div><p class="eyebrow dark">Public contract</p><h2>One synchronous function</h2></div><a class="inline-link" href="https://github.com/alexandroit/stackline-deep-is/blob/main/README.md#api">Full reference</a></div><div class="api-table-wrapper"><table><thead><tr><th>Call</th><th>Behavior</th><th>Return</th></tr></thead><tbody><tr><td><code>deepIs(actual, expected)</code></td><td>Compares values without mutation</td><td><code>boolean</code></td></tr><tr><td><code>deepIs(NaN, NaN)</code></td><td>Preserves historical NaN equality</td><td><code>true</code></td></tr><tr><td><code>deepIs(+0, -0)</code></td><td>Preserves signed-zero distinction</td><td><code>false</code></td></tr><tr><td><code>deepIs(1, '1')</code></td><td>Preserves loose primitive comparison</td><td><code>true</code></td></tr></tbody></table></div></div></section>
+      <section class="content-band"><div class="section-inner proof-grid"><div><p class="eyebrow dark">Release evidence</p><h2>Compatibility is measured</h2></div><dl class="proof-list"><div><dt>5,625</dt><dd>differential pairs against 0.1.4</dd></div><div><dt>100,000</dt><dd>tested nesting levels</dd></div><div><dt>100%</dt><dd>core coverage</dd></div><div><dt>0</dt><dd>runtime dependencies</dd></div></dl></div></section>
+      <section class="resource-band"><div class="section-inner resource-grid"><div><p class="eyebrow">Portable reference</p><h2>Human and machine-readable docs</h2><p>Versioned API, migration, compatibility, and security references remain available without client rendering.</p></div><nav aria-label="Documentation resources"><a href="./llms.txt">llms.txt</a><a href="./llms-full.txt">llms-full.txt</a><a href="./guides/compatibility.md">Compatibility</a></nav></div></section>
+    </main>
+    <footer><div><strong>@stackline/deep-is</strong><span>MIT licensed. Independent and not affiliated with the upstream maintainers.</span></div><nav aria-label="Footer navigation"><a href="https://alexandro.net/docs/open-source/">All packages</a><a href="./guides/migration.md">Migration</a><a href="https://github.com/alexandroit/stackline-deep-is/blob/main/SECURITY.md">Security</a></nav></footer>
+  </body>
+</html>

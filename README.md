@@ -1,6 +1,20 @@
 # @stackline/deep-is
 
-Stack-safe deep equality with the established `deep-is@0.1.4` behavior.
+> Stack-safe deep equality with the established `deep-is@0.1.4` behavior.
+
+[![npm version](https://img.shields.io/npm/v/@stackline/deep-is.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/deep-is)
+[![npm downloads](https://img.shields.io/npm/dm/@stackline/deep-is.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/deep-is)
+[![CI](https://img.shields.io/github/actions/workflow/status/alexandroit/stackline-deep-is/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/alexandroit/stackline-deep-is/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/@stackline/deep-is.svg?style=flat-square)](LICENSE)
+
+**[Docs and comparator](https://alexandro.net/docs/vanilla/deep-is/)** |
+**[npm](https://www.npmjs.com/package/@stackline/deep-is)** |
+**[GitHub](https://github.com/alexandroit/stackline-deep-is)** |
+**[Migration](MIGRATION.md)** |
+**[Security](SECURITY.md)** |
+**[Changelog](CHANGELOG.md)**
+
+**Current package version:** `1.0.1`
 
 This package is an independent, maintained continuation of
 [`deep-is`](https://github.com/thlorenz/deep-is). It keeps the callable API and

@@ -7,6 +7,19 @@ and this project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-08-26
+
+### Added
+
+- Public interactive comparator and machine-readable documentation.
+- Pinned CI, CodeQL, and immutable npm publication workflows.
+- Documentation build, crawler metadata, package checks, and production audit
+  gates.
+
+### Changed
+
+- Public repository metadata to the canonical `stackline-deep-is` repository.
+
 ## [1.0.0] - 2026-08-26
 
 ### Added
@@ -29,5 +42,6 @@ and this project follows [Semantic Versioning](https://semver.org/).
 - Zero runtime dependencies.
 - The original MIT license and copyright notices.
 
-[Unreleased]: https://github.com/alexandroit/deep-is/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/alexandroit/deep-is/releases/tag/v1.0.0
+[Unreleased]: https://github.com/alexandroit/stackline-deep-is/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/alexandroit/stackline-deep-is/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/alexandroit/stackline-deep-is/tree/v1.0.0

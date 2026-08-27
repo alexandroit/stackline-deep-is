@@ -1,6 +1,6 @@
 {
   "name": "@stackline/deep-is",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stack-safe deep equality with the proven deep-is 0.1.4 semantics",
   "type": "commonjs",
   "main": "./index.js",
@@ -40,7 +40,7 @@
   "scripts": {
     "clean": "node scripts/clean.mjs",
     "build": "node scripts/build.mjs",
-    "lint": "eslint index.js index.mjs scripts test",
+    "lint": "eslint index.js index.mjs scripts test docs-site",
     "test:upstream": "tape test/NaN.js test/cmp.js test/neg-vs-pos-0.js",
     "test:compatibility": "node test/compatibility.js",
     "test:depth": "node scripts/check-depth.mjs",
@@ -50,18 +50,23 @@
     "test": "npm run test:upstream && npm run test:compatibility && npm run test:depth && npm run test:esm && npm run test:types && npm run test:browser",
     "test:coverage": "c8 --check-coverage --lines 95 --functions 95 --branches 90 node test/compatibility.js",
     "test:smoke": "node scripts/smoke-install.mjs && node scripts/smoke-optionator.mjs",
+    "test:docs": "npm run docs:build && node scripts/check-docs.mjs",
     "check:package": "publint && attw --pack .",
     "pack:check": "npm pack --dry-run",
-    "verify": "npm run lint && npm run build && npm test && npm run test:coverage && npm run test:smoke && npm run check:package && npm run pack:check",
+    "audit:dependencies": "npm audit --omit=dev --audit-level=low",
+    "audit:signatures": "npm audit signatures",
+    "docs:build": "npm run build && node scripts/build-docs.mjs",
+    "docs:serve": "node scripts/serve-docs.mjs",
+    "verify": "npm run clean && npm run lint && npm run build && npm test && npm run test:coverage && npm run test:smoke && npm run check:package && npm run pack:check && npm run test:docs && npm run audit:dependencies",
     "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexandroit/deep-is.git"
+    "url": "git+https://github.com/alexandroit/stackline-deep-is.git"
   },
   "homepage": "https://alexandro.net/docs/vanilla/deep-is/",
   "bugs": {
-    "url": "https://github.com/alexandroit/deep-is/issues"
+    "url": "https://github.com/alexandroit/stackline-deep-is/issues"
   },
   "keywords": [
     "deep-equal",
