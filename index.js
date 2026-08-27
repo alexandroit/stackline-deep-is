@@ -1,42 +1,103 @@
+'use strict';
+
 var pSlice = Array.prototype.slice;
-var Object_keys = typeof Object.keys === 'function'
-    ? Object.keys
-    : function (obj) {
-        var keys = [];
-        for (var key in obj) keys.push(key);
-        return keys;
+var Object_keys = Object.keys;
+
+module.exports = function deepEqual(actual, expected) {
+  var pending = [{ actual: actual, expected: expected }];
+  var compared = new WeakMap();
+
+  while (pending.length > 0) {
+    var comparison = pending.pop();
+    var a;
+    var b;
+
+    if (comparison.parent) {
+      a = comparison.actual[comparison.key];
+      b = comparison.expected[comparison.key];
+    } else {
+      a = comparison.actual;
+      b = comparison.expected;
     }
-;
 
-var deepEqual = module.exports = function (actual, expected) {
-  // enforce Object.is +0 !== -0
-  if (actual === 0 && expected === 0) {
-    return areZerosEqual(actual, expected);
+    // Enforce Object.is semantics for positive and negative zero.
+    if (a === 0 && b === 0) {
+      if (!areZerosEqual(a, b)) return false;
+      continue;
+    }
 
-  // 7.1. All identical values are equivalent, as determined by ===.
-  } else if (actual === expected) {
-    return true;
+    if (a === b) continue;
 
-  } else if (actual instanceof Date && expected instanceof Date) {
-    return actual.getTime() === expected.getTime();
+    if (a instanceof Date && b instanceof Date) {
+      if (a.getTime() !== b.getTime()) return false;
+      continue;
+    }
 
-  } else if (isNumberNaN(actual)) {
-    return isNumberNaN(expected);
+    if (isNumberNaN(a)) {
+      if (!isNumberNaN(b)) return false;
+      continue;
+    }
 
-  // 7.3. Other pairs that do not both pass typeof value == 'object',
-  // equivalence is determined by ==.
-  } else if (typeof actual != 'object' && typeof expected != 'object') {
-    return actual == expected;
+    // Preserve deep-is 0.1.4 loose equality for non-object pairs.
+    if (typeof a !== 'object' && typeof b !== 'object') {
+      if (a != b) return false;
+      continue;
+    }
 
-  // 7.4. For all other Object pairs, including Array objects, equivalence is
-  // determined by having the same number of owned properties (as verified
-  // with Object.prototype.hasOwnProperty.call), the same set of keys
-  // (although not necessarily the same order), equivalent values for every
-  // corresponding key, and an identical 'prototype' property. Note: this
-  // accounts for both named and indexed properties on Arrays.
-  } else {
-    return objEquiv(actual, expected);
+    if (isUndefinedOrNull(a) || isUndefinedOrNull(b)) return false;
+
+    if (isReference(a) && isReference(b)) {
+      var expectedValues = compared.get(a);
+      if (expectedValues && expectedValues.has(b)) continue;
+      if (!expectedValues) {
+        expectedValues = new WeakSet();
+        compared.set(a, expectedValues);
+      }
+      expectedValues.add(b);
+    }
+
+    // This is the historical public behavior: compare a property literally
+    // named "prototype", not the objects' internal prototypes.
+    if (a.prototype !== b.prototype) return false;
+
+    if (isArguments(a)) {
+      if (!isArguments(b)) return false;
+      pending.push({ actual: pSlice.call(a), expected: pSlice.call(b) });
+      continue;
+    }
+
+    var ka;
+    var kb;
+    try {
+      ka = Object_keys(a);
+      kb = Object_keys(b);
+    } catch (error) {
+      return false;
+    }
+
+    if (ka.length !== kb.length) return false;
+
+    ka.sort();
+    kb.sort();
+
+    var i;
+    for (i = ka.length - 1; i >= 0; i -= 1) {
+      if (ka[i] !== kb[i]) return false;
+    }
+
+    // The stack is LIFO. Pushing low-to-high preserves the baseline's
+    // high-to-low recursive comparison and getter-observation order.
+    for (i = 0; i < ka.length; i += 1) {
+      pending.push({
+        actual: a,
+        expected: b,
+        key: ka[i],
+        parent: true
+      });
+    }
   }
+
+  return true;
 };
 
 function isUndefinedOrNull(value) {
@@ -44,59 +105,17 @@ function isUndefinedOrNull(value) {
 }
 
 function isArguments(object) {
-  return Object.prototype.toString.call(object) == '[object Arguments]';
+  return Object.prototype.toString.call(object) === '[object Arguments]';
 }
 
 function isNumberNaN(value) {
-  // NaN === NaN -> false
-  return typeof value == 'number' && value !== value;
+  return typeof value === 'number' && value !== value;
 }
 
 function areZerosEqual(zeroA, zeroB) {
-  // (1 / +0|0) -> Infinity, but (1 / -0) -> -Infinity and (Infinity !== -Infinity)
   return (1 / zeroA) === (1 / zeroB);
 }
 
-function objEquiv(a, b) {
-  if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
-    return false;
-
-  // an identical 'prototype' property.
-  if (a.prototype !== b.prototype) return false;
-  //~~~I've managed to break Object.keys through screwy arguments passing.
-  //   Converting to array solves the problem.
-  if (isArguments(a)) {
-    if (!isArguments(b)) {
-      return false;
-    }
-    a = pSlice.call(a);
-    b = pSlice.call(b);
-    return deepEqual(a, b);
-  }
-  try {
-    var ka = Object_keys(a),
-        kb = Object_keys(b),
-        key, i;
-  } catch (e) {//happens when one is a string literal and the other isn't
-    return false;
-  }
-  // having the same number of owned properties (keys incorporates
-  // hasOwnProperty)
-  if (ka.length != kb.length)
-    return false;
-  //the same set of keys (although not necessarily the same order),
-  ka.sort();
-  kb.sort();
-  //~~~cheap key test
-  for (i = ka.length - 1; i >= 0; i--) {
-    if (ka[i] != kb[i])
-      return false;
-  }
-  //equivalent values for every corresponding key, and
-  //~~~possibly expensive deep test
-  for (i = ka.length - 1; i >= 0; i--) {
-    key = ka[i];
-    if (!deepEqual(a[key], b[key])) return false;
-  }
-  return true;
+function isReference(value) {
+  return value !== null && (typeof value === 'object' || typeof value === 'function');
 }
