@@ -4,8 +4,10 @@ package: deep-is
 upstream: https://github.com/thlorenz/deep-is
 stackline_package: "@stackline/deep-is"
 state: PUBLISHED
-registry_scope: verdaccio-only
-public_npm: false
+registry_scope: verdaccio-and-public-npm
+public_npm: true
+public_github: true
+docs_production: true
 created: 2026-08-26
 last_updated: 2026-08-26
 ---
@@ -68,9 +70,10 @@ GO.
 
 ## Implementation Status
 
-Implementation and release gates are complete. `@stackline/deep-is@1.0.0` is
-published only to the local Verdaccio registry. Official npm publication and a
-public GitHub repository were not authorized and were not performed.
+Implementation and release gates are complete. The Verdaccio rehearsal was
+published as `1.0.0`; the exact final artifact is public as
+`@stackline/deep-is@1.0.1` on Verdaccio and npm. Source, CI, CodeQL, release
+assets, and production documentation are public.
 
 ## Release Evidence
 
@@ -84,11 +87,17 @@ public GitHub repository were not authorized and were not performed.
 - Packaging: `publint` clean; AreTheTypesWrong all green; packed install passed.
 - Downstream: representative `optionator@0.9.4` enum parsing passed against the
   Stackline implementation.
-- Registry: direct and npm-alias installs from Verdaccio passed.
+- Registries: direct and npm-alias installs from Verdaccio and official npm
+  passed; the public smoke lock resolved only from `registry.npmjs.org`.
 - Production audit: zero known runtime vulnerabilities.
-- Tarball: 9.3 kB packed, 34.6 kB unpacked, 17 files.
-- SHA-1: `b3c33fcc52e0efb9f6d216ec18d73ebcd3a64c30`.
-- Integrity: `sha512-0ZerJpqrk+Pbe4e9v7jWUaZwG9P/wHSnukYOWuRCyqvtZxuF52oJxihystlGbytgGAwGbjWAXWcWd2RZW0mWLg==`.
+- CI: https://github.com/alexandroit/stackline-deep-is/actions/runs/33033258833
+- CodeQL: https://github.com/alexandroit/stackline-deep-is/actions/runs/33033258796
+- Source commit: `5c5d344933077c6c26179cf1840a854e3d7d3bdd`.
+- Release: https://github.com/alexandroit/stackline-deep-is/releases/tag/v1.0.1
+- Documentation: https://alexandro.net/docs/vanilla/deep-is/
+- Tarball: 9.8 kB packed, 36.3 kB unpacked, 17 files.
+- SHA-1: `4fa48fa659fd3538c3de29c5f61241f569bc4fbe`.
+- Integrity: `sha512-z4gQ8m+pdFSQ1Og3kJ/Zxu9q+ajlS6XLUDZ+y1ZewYxD5X87urnuB+et8oIDPV7eX5FtDDw7Re0TJ/IcN5sRJg==`.
 
 ## Chronological Log
 
@@ -102,4 +111,9 @@ public GitHub repository were not authorized and were not performed.
 - 2026-08-26: full `npm run verify` gate passed, including package and
   downstream adoption checks.
 - 2026-08-26: version `1.0.0` published to Verdaccio and validated by direct
-  scoped install and legacy npm alias. Official npm remained untouched.
+  scoped install and legacy npm alias as the private registry rehearsal.
+- 2026-08-26: final `1.0.1` artifact published unchanged to Verdaccio and
+  official npm; public direct and alias installs, runtime checks, and audit
+  passed.
+- 2026-08-26: GitHub source, CI, CodeQL, release asset inventory, production
+  documentation, package catalog, robots, and aggregate sitemaps validated.

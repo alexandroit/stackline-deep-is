@@ -3,12 +3,13 @@
 ## Current State
 
 - Upstream: `deep-is@0.1.4`
-- Stackline target: `@stackline/deep-is@1.0.0`
+- Stackline target: `@stackline/deep-is@1.0.1`
 - Decision: GO
-- State: PUBLISHED (Verdaccio only)
+- State: PUBLIC RELEASE COMPLETE
 - Runtime dependencies: zero
-- Verdaccio publication: `@stackline/deep-is@1.0.0`, completed and validated
-- Public npm publication: not authorized and not performed
+- Verdaccio and public npm: `@stackline/deep-is@1.0.1`, completed and validated
+- GitHub: https://github.com/alexandroit/stackline-deep-is
+- Docs: https://alexandro.net/docs/vanilla/deep-is/
 
 ## Verified Delta
 
@@ -28,11 +29,14 @@ alias documentation are complete.
 - `publint`: clean
 - AreTheTypesWrong: all green
 - `optionator@0.9.4` adoption path: PASS
-- Verdaccio direct and alias installs: PASS
+- Verdaccio and official npm direct and alias installs: PASS
 - production dependency audit: 0 findings
-- tarball SHA-1: `b3c33fcc52e0efb9f6d216ec18d73ebcd3a64c30`
+- tarball SHA-1: `4fa48fa659fd3538c3de29c5f61241f569bc4fbe`
+- tarball integrity: `sha512-z4gQ8m+pdFSQ1Og3kJ/Zxu9q+ajlS6XLUDZ+y1ZewYxD5X87urnuB+et8oIDPV7eX5FtDDw7Re0TJ/IcN5sRJg==`
+- CI and CodeQL: PASS
+- GitHub release assets: tarball, SHA512SUMS, and CycloneDX SBOM
 
 ## Next Gate
 
-Project 05 (`redeyed`) may enter RESEARCHING. Public GitHub, alexandro.net, and
-official npm release remain separate authorization gates.
+Projects 05 and 06 are also public. Project 07 (`cardinal`) is the next fixed
+roadmap item.
