@@ -7,6 +7,13 @@ and this project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-09-28
+
+- Organize package documentation, preserve API and migration examples, and add Stackline community links.
+- Improve package discovery keywords with precise domain terms and `stackline`.
+- Pin GitHub Actions release tooling and require an explicit missing-version response before publication.
+
+
 ## [1.0.1] - 2026-08-26
 
 ### Added
@@ -42,6 +49,6 @@ and this project follows [Semantic Versioning](https://semver.org/).
 - Zero runtime dependencies.
 - The original MIT license and copyright notices.
 
-[Unreleased]: https://github.com/alexandroit/stackline-deep-is/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/alexandroit/stackline-deep-is/compare/v1.0.2...HEAD
 [1.0.1]: https://github.com/alexandroit/stackline-deep-is/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/alexandroit/stackline-deep-is/tree/v1.0.0

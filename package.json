@@ -1,6 +1,6 @@
 {
   "name": "@stackline/deep-is",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stack-safe deep equality with the proven deep-is 0.1.4 semantics",
   "type": "commonjs",
   "main": "./index.js",
@@ -75,7 +75,8 @@
     "compare",
     "cycle-safe",
     "stack-safe",
-    "stackline"
+    "stackline",
+    "cyclic-objects"
   ],
   "author": "Stackline Maintainers",
   "contributors": [
