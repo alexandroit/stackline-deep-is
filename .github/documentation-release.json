@@ -1,0 +1,30 @@
+{
+  "repository": "alexandroit/stackline-deep-is",
+  "packages": [
+    {
+      "name": "@stackline/deep-is",
+      "path": "README.md",
+      "version": "1.0.3",
+      "baselineVersion": "1.0.2",
+      "keywords": [
+        "stackline",
+        "npm-package",
+        "deep-is",
+        "typescript",
+        "nodejs",
+        "deep-equal",
+        "deep-equality",
+        "equality",
+        "compare",
+        "cycle-safe",
+        "stack-safe",
+        "cyclic-objects"
+      ],
+      "homepage": "https://alexandro.net/docs/vanilla/deep-is/",
+      "baselineTarball": "https://registry.npmjs.org/@stackline/deep-is/-/deep-is-1.0.2.tgz",
+      "baselineIntegrity": "sha512-hBh0VYvtQs0dN8RlW6MzklGcyjaXXZ2bUU2D0Ygw03iDF//asy458CXravMb+Lm/zFO8rY3E7jeWnJyCrTqxRw==",
+      "expectedSha512": "5f2a762401ab4df708e15bcb7c31df9495b5586bc842cdacb4968128ee946a0b8e9f991a7de1e78403cad9c86599f1d77f74263606ab33b5d49c13ed2607492d",
+      "tag": "docs-stackline-deep-is-v1.0.3"
+    }
+  ]
+}
