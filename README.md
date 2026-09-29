@@ -1,17 +1,18 @@
 # @stackline/deep-is
 
-> Stack-safe deep equality with the proven deep-is 0.1.4 semantics
+> Stack-safe deep equality with the proven deep-is 0.1.4 semantics.
 
 [![npm version](https://img.shields.io/npm/v/@stackline/deep-is.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/deep-is)
-[![license](https://img.shields.io/npm/l/@stackline/deep-is.svg?style=flat-square)](https://github.com/alexandroit/stackline-deep-is/blob/main/LICENSE)
-[![GitHub repository](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)](https://github.com/alexandroit/stackline-deep-is)
+[![license](https://img.shields.io/npm/l/@stackline/deep-is.svg?style=flat-square)](https://github.com/alexandroit/stackline-deep-is)
+[![GitHub repository](https://img.shields.io/badge/GitHub-alexandroit%2Fstackline-deep-is-181717?style=flat-square&logo=github)](https://github.com/alexandroit/stackline-deep-is)
+[![Docs](https://img.shields.io/badge/docs-alexandro.net-0f766e?style=flat-square)](https://alexandro.net/docs/vanilla/deep-is/)
+[![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation](https://alexandro.net/docs/vanilla/deep-is/)** |
-**[npm](https://www.npmjs.com/package/@stackline/deep-is)** |
-**[Issues](https://github.com/alexandroit/stackline-deep-is/issues)** |
-**[Repository](https://github.com/alexandroit/stackline-deep-is)**
+**[Documentation](https://alexandro.net/docs/vanilla/deep-is/)** | **[npm](https://www.npmjs.com/package/@stackline/deep-is)** | **[Issues](https://github.com/alexandroit/stackline-deep-is/issues)** | **[Repository](https://github.com/alexandroit/stackline-deep-is)**
 
-**Package version:** `1.0.2`
+**Current package version:** `1.0.3`
+
+---
 
 ## Why this package?
 
@@ -37,7 +38,7 @@ is not affiliated with or endorsed by the original authors.
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/deep-is@1.0.2` |
+| Package | `@stackline/deep-is@1.0.3` |
 | Node.js runtime | `>=12` |
 | CommonJS / primary entry | `./index.js` |
 | ES module entry | `./index.mjs` |
@@ -159,16 +160,31 @@ npm run test:smoke
 
 Run `npm run verify` and inspect the package contents before release. Publish a new version through the [GitHub Actions publishing workflow](https://github.com/alexandroit/stackline-deep-is/actions/workflows/publish.yml), using the SHA-512 digest of the reviewed tarball. Verify the exact published version, tarball integrity, and npm provenance after the run.
 
-## Community and Support
-
-Report reproducible package issues in the [issue tracker](https://github.com/alexandroit/stackline-deep-is/issues). Use the [security policy](https://github.com/alexandroit/stackline-deep-is/blob/main/SECURITY.md) for vulnerability reports.
-
-- [Stackline / Alexandro.Net](https://alexandro.net/)
-- [GitHub](https://github.com/alexandroit)
-- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
-- [Reddit community: r/Stackline](https://www.reddit.com/r/Stackline/)
-
 ## License
 
 MIT. Original copyright and permission notices are preserved in
 [LICENSE](https://github.com/alexandroit/stackline-deep-is/blob/main/LICENSE).
+
+## Credits and original authors
+
+- Original project: [deep-is](https://github.com/thlorenz/deep-is).
+- Stackline Maintainers.
+- Thorsten Lorenz.
+- James Halliday.
+- Thomas Robinson.
+- Copyright (c) 2012, 2013 Thorsten Lorenz <thlorenz@gmx.de>.
+- Copyright (c) 2012 James Halliday <mail@substack.net>.
+- Copyright (c) 2009 Thomas Robinson <280north.com>.
+- Stackline maintenance: [Alexandro Paixao Marques](https://www.linkedin.com/in/aleinfo/) and [Stackline contributors](https://github.com/alexandroit).
+
+Original copyright, license notices and contributor acknowledgements remain part of this distribution. Stackline maintenance does not replace authorship of the original work.
+
+## Community and Links
+
+- [Stackline website](https://alexandro.net/)
+- [GitHub projects](https://github.com/alexandroit)
+- [npm packages](https://www.npmjs.com/~alex360qc)
+- [Reddit community — r/Stackline](https://www.reddit.com/r/Stackline/)
+- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
+
+Use this repository's issue tracker for reproducible bugs and feature requests. Join r/Stackline for examples, usage questions and release discussions.

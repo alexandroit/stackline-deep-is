@@ -1,6 +1,6 @@
 {
   "name": "@stackline/deep-is",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Stack-safe deep equality with the proven deep-is 0.1.4 semantics",
   "type": "commonjs",
   "main": "./index.js",
@@ -69,13 +69,17 @@
     "url": "https://github.com/alexandroit/stackline-deep-is/issues"
   },
   "keywords": [
+    "stackline",
+    "npm-package",
+    "deep-is",
+    "typescript",
+    "nodejs",
     "deep-equal",
     "deep-equality",
     "equality",
     "compare",
     "cycle-safe",
     "stack-safe",
-    "stackline",
     "cyclic-objects"
   ],
   "author": "Stackline Maintainers",
