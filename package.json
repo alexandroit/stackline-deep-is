@@ -1,6 +1,6 @@
 {
   "name": "@stackline/deep-is",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Stack-safe deep equality with the proven deep-is 0.1.4 semantics",
   "type": "commonjs",
   "main": "./index.js",
