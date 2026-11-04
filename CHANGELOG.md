@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.5 - 2026-11-04
+
+- Update development dependency overrides for current security fixes.
+- Use patched Node.js tooling and validate release metadata against the package manifest.
+
 All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)

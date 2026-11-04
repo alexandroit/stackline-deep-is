@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { readFile, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
+const version = process.env.STACKLINE_VERSION || JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8')).version
 const registry = process.env.STACKLINE_REGISTRY || 'http://127.0.0.1:4873';
 const temporary = await mkdtemp(path.join(os.tmpdir(), 'stackline-deep-is-registry-'));
 
@@ -11,8 +12,8 @@ try {
   await writeFile(path.join(temporary, 'package.json'), JSON.stringify({
     private: true,
     dependencies: {
-      '@stackline/deep-is': '1.0.0',
-      'deep-is': 'npm:@stackline/deep-is@1.0.0'
+      '@stackline/deep-is': version,
+      'deep-is': `npm:@stackline/deep-is@${version}`
     }
   }));
 

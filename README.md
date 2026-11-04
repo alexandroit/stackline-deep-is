@@ -38,7 +38,7 @@ is not affiliated with or endorsed by the original authors.
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/deep-is@1.0.4` |
+| Package | `@stackline/deep-is@1.0.5` |
 | Node.js runtime | `>=12` |
 | CommonJS / primary entry | `./index.js` |
 | ES module entry | `./index.mjs` |
