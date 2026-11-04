@@ -10,7 +10,7 @@
 
 **[Documentation](https://alexandro.net/docs/vanilla/deep-is/)** | **[npm](https://www.npmjs.com/package/@stackline/deep-is)** | **[Issues](https://github.com/alexandroit/stackline-deep-is/issues)** | **[Repository](https://github.com/alexandroit/stackline-deep-is)**
 
-**Current package version:** `1.0.4`
+**Current package version:** `1.0.6`
 
 ---
 
@@ -38,7 +38,7 @@ is not affiliated with or endorsed by the original authors.
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/deep-is@1.0.5` |
+| Package | `@stackline/deep-is@1.0.6` |
 | Node.js runtime | `>=12` |
 | CommonJS / primary entry | `./index.js` |
 | ES module entry | `./index.mjs` |
